@@ -10,13 +10,12 @@ class Solution:
             if target_remain in count_map:
                 first_index = nums.index(num)
 
-                if target_remain == num and count_map[num] > 1:
-                    # to avoid duplicate index like => [0, 0]
-                    return [first_index, nums.index(target_remain, first_index + 1)]
-                elif target_remain != num:
-                    # index(value, start=first index, stop=last index)
+                if target_remain != num:
+                    # two avoid duplicate index => [0, 0]
                     return [first_index, nums.index(target_remain, first_index)]
-
+                elif count_map[num] > 1: # target_remain == num:
+                    # index(value, start=first index, stop=last index)
+                    return [first_index, nums.index(target_remain, first_index + 1)]
 
 
 s = Solution()
