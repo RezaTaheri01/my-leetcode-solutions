@@ -8,12 +8,13 @@ class Solution:
         for num in nums:  # O(n)
             target_remain = target - num
             if target_remain in count_map:
-                first_index = nums.index(num)
-
+                
                 if target_remain != num:
+                    first_index = nums.index(num) 
                     # index(value, start=first index, stop=last index)
                     return [first_index, nums.index(target_remain, first_index)]
                 elif count_map[num] > 1: # target_remain == num:
+                    first_index = nums.index(num)
                     # (first_index + 1) to avoid duplicate index like => [0, 0]
                     return [first_index, nums.index(target_remain, first_index + 1)]
 
