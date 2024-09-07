@@ -3,17 +3,21 @@ from typing import Counter
 
 class Solution:
     def twoSum(self, nums: list[int], target: int) -> list[int]:
-        count_map = Counter(nums)
-        for num in nums:
-            tmp = target - num
-            if num < target and tmp in count_map:
-                if (tmp == num and count_map[num] > 1):
-                    one = nums.index(num)
-                    nums[one] = num + 1 # change the first number to find the index of second 
-                    return [one, nums.index(tmp)]
-                elif tmp != num:
-                    return [nums.index(num), nums.index(tmp)]
+        count_map = Counter(nums)  # [1, 1, 1, 1] => {1 : 4}
+
+        for num in nums:  # O(n)
+            target_remain = target - num
+            if target_remain in count_map:
+                first_index = nums.index(num)
+
+                if target_remain == num and count_map[num] > 1:
+                    # to avoid duplicate index like => [0, 0]
+                    return [first_index, nums.index(target_remain, first_index + 1)]
+                elif target_remain != num:
+                    # index(value, start=first index, stop=last index)
+                    return [first_index, nums.index(target_remain, first_index)]
+
 
 
 s = Solution()
-print(s.twoSum([1,1,1,1], 2))
+print(s.twoSum([1, 1, 1, 1], 2))
