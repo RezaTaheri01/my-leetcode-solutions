@@ -1,6 +1,6 @@
 def findMedianSortedArrays(nums1: list[int], nums2: list[int]) -> float:
     nums1 += nums2
-    nums1.sort()
+    nums1.sort() # O(n)
      
     if nums1:
         l = len(nums1)
@@ -10,4 +10,4 @@ def findMedianSortedArrays(nums1: list[int], nums2: list[int]) -> float:
             return nums1[l//2]
 
 
-findMedianSortedArrays([1,2], [4,3])
+print(findMedianSortedArrays([1,2], [4,3]))
