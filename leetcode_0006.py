@@ -1,21 +1,20 @@
-class Solution:
+class Solution: # not an efficient solution :)
     def convert(self, s: str, numRows: int) -> str:
         if numRows == 1 or len(s) == 1:
             return s
-        betweenRows = abs(numRows - 2)
+        betweenCols = abs(numRows - 2)
         currIndex = 0
         zigs = []
-        while currIndex < len(s):
+        while currIndex < len(s): # O(n)
             zigs.append(s[currIndex: currIndex + numRows].ljust(numRows))
             currIndex += numRows
-            tmp = s[currIndex: currIndex + betweenRows].ljust(numRows)[::-1]
+            tmp = s[currIndex: currIndex + betweenCols].ljust(numRows)[::-1]
             tmp = tmp[1:] + ' '
             zigs.append(tmp)
-            currIndex += betweenRows
+            currIndex += betweenCols
             
-        # print(zigs)
         result = ''   
-        for i in range(numRows):
+        for i in range(numRows): # O(n^2)
             for z in zigs:
                 char = z[i]
                 if char != ' ':
@@ -24,4 +23,4 @@ class Solution:
         return result
     
 s = Solution()
-print(s.convert("AB", 1))
+print(s.convert("PAYPALISHIRING", 3))
