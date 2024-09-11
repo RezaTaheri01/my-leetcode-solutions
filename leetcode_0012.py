@@ -1,18 +1,18 @@
 class Solution:
-    def change_to_roman(self, digit, power, roman_map):
-        number = int(digit) * power
-        sym_first = ''
+    def change_to_roman(self, digit, place_value, roman_map):
+        number = int(digit) * place_value # 3749 => digit = 7 place_value = 100
+        sym_first = '' # symbol that subtract sym
         if digit not in '49':
-            sym = roman_map[power]
-            count = number // power
-            if count >= 5:
+            sym = roman_map[place_value]
+            count = number // place_value
+            if count >= 5: # if true => we can use 5, 50, 500
                 count -= 5
-                sym_first = roman_map[power * 5]
+                sym_first = roman_map[place_value * 5]
             return sym_first + sym * count
 
-        else:  # Ok
-            sym = roman_map[number + power]
-            sym_first = roman_map[power]
+        else:
+            sym = roman_map[number + place_value]
+            sym_first = roman_map[place_value]
             return sym_first + sym
 
     def intToRoman(self, num: int) -> str:
@@ -25,17 +25,22 @@ class Solution:
             500: 'D',
             1000: 'M'
         }
+        
         if num == 0:
             return ''
+        
         # 1.Divide digits like 3749 -> 3000, 700, 40, 9
-        power = 1
-        romans = []
-        for digit in str(num)[::-1]:
+        # 3 * 1000, 7 * 100, ...
+        place_value = 1
+        romans = ""
+        
+        for digit in str(num)[::-1]: # O(n) => n = len(num)
+            
             # 2.convert each num in nums to roman base on 3 rules
-            romans.append(self.change_to_roman(digit, power, roman_map))
-            power *= 10
+            romans = (self.change_to_roman(digit, place_value, roman_map)) + romans
+            place_value *= 10
 
-        return "".join(romans[::-1])
+        return romans
 
 
 s = Solution()
