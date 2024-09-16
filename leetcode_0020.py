@@ -1,33 +1,23 @@
-# import re
+class Solution:
+    def isValid(self, s: str) -> bool:
+        stack = []
+        close_li = [']', ')', '}']
+        chr_map = {']': '[', ')': '(', '}': '{'}
 
-# re_pattern = "[^{|}|\[|\]|\(|\)]"
+        for chr in s: # O(n)
+            if chr in close_li: # O(3)
+                # check last one in stack
+                if not stack:
+                    return False
+                elif len(stack) > 0 and chr_map[chr] != stack.pop():
+                    return False
+            else:
+                stack.append(chr)
 
-# def check_RE(re_pattern, txt):
-#     x = re.search(re_pattern, txt)
-
-txt = '(({({()})}))'
-stack = []
-close_li = ')]}'
-chr_map = {']': '[', ')': '(', '}': '{'}
-
-
-def main():
-    for char in txt:
-        if char in close_li:
-            # check last one in stack
-            if not stack: # == len(stack) == 0
-                return False
-            elif chr_map[char] != stack.pop():
-                return False
-        else:
-            stack.append(char)
-
-    if not stack:
-        return True
-    return False
+        if not stack:
+            return True
+        return False
 
 
-# if check_RE(re_pattern, txt) is None:
-#     main()
-
-print(main())
+s = Solution()
+print(s.isValid('(({({()})}))'))
