@@ -1,12 +1,8 @@
 class Solution:
     def simplifyPath(self, path: str) -> str:
-        exceptions = {
-            '.': True,
-            '..': True,
-            "": True  # // => [""]
-        }
+        exceptions = {'.', '..', ""} # using set instead of dictionary
 
-        path = path.split('/') # O(n)
+        path = path.split('/')  # O(n)
         simplePath = ['/']
 
         for p in path:
@@ -19,4 +15,4 @@ class Solution:
             # add extra slash that remove in next step for root exception
             simplePath.append('/')
 
-        return "".join(simplePath)[:-1] # O(n)
+        return "".join(simplePath)[:-1]  # O(n)
