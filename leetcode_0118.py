@@ -1,6 +1,4 @@
-# Todo: O(n) time complexity
-
-class Solution: # O(n^2) 
+class Solution:  # O(n^2)
     def generate(self, numRows: int) -> list[list[int]]:
         pascal: list = [[1], [1, 1]]  # init
         row_len = 2  # current level(deepness) that also current size
@@ -34,3 +32,10 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
+# The k-th element in the n-th row of Pascal’s Triangle is given by:
+
+#    n!
+# __________
+#  K!(n-k)!
