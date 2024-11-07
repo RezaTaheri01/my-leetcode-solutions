@@ -3,11 +3,8 @@ class Solution:  # O(2n) => O(n)
         counts = {}
 
         # count s
-        for char in s:  # O(n)
-            if char in counts:
-                counts[char] += 1
-            else:
-                counts[char] = 1
+        for char in s:
+            counts[char] = counts.get(char, 0) + 1
         c = 0
         for key, value in counts.items():  # O(n)
             if value == 1:
