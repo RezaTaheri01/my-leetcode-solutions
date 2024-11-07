@@ -5,11 +5,9 @@ class Solution:
         if len(nums1) > len(nums2):
             nums1, nums2 = nums2, nums1
 
-        for n in nums1:  # O(n)
-            if n in counts:
-                counts[n] += 1
-            else:
-                counts[n] = 1
+        for n in nums1:
+            counts[n] = counts.get(n, 0) + 1
+
         result = []
 
         for num in nums2:  # Iterate over nums2
