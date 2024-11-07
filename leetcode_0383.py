@@ -3,11 +3,9 @@ class Solution:
     def canConstructD(self, ransomNote: str, magazine: str) -> bool:
         # Create hash map of ransomNote letters
         letters = {}
+
         for c in ransomNote:
-            if c in letters:
-                letters[c] += 1
-            else:
-                letters[c] = 1
+            letters[c] = letters.get(c, 0) + 1
 
         # Search for hash map in magazine
         for c in magazine:
