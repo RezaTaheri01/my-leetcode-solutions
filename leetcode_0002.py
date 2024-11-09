@@ -40,3 +40,28 @@ s = Solution()
 head1 = s.create_linked_list([2, 4, 9])
 head2 = s.create_linked_list([5, 6, 4, 9])
 s.addTwoNumbers(head1, head2)
+
+
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+# class Solution:
+#     def navigation(self, l1: Optional[ListNode]) -> str:
+#         if not l1:
+#             return ''
+#         return str(l1.val) + self.navigation(l1.next)
+
+#     def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
+#         num1 = self.navigation(l1)[::-1]
+#         num2 = self.navigation(l2)[::-1]
+
+#         result = str(int(num1) + int(num2))[::-1]
+
+#         head = ListNode(int(result[0]))  # Create the head node
+#         current = head
+#         for value in result[1:]:
+#             current.next = ListNode(int(value))  # Create and link the next node
+#             current = current.next
+#         return head
