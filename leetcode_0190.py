@@ -1,16 +1,19 @@
 class Solution:
     def reverseBits(self, n: int) -> int:
+        n = bin(n)[2:]  # dec to bin
+        n = (32 - len(str(n))) * "0" + str(n)  # make sure that len(n) == 32
+
         power = 0
-        n = str(n)
         result = 0
-        
-        for d in n:
+
+        # convert bin to dec
+        for d in n:  # reverse iteration
             if d == '1':
                 result += 2 ** power
             power += 1
 
-        print(result)
+        return result
 
 
 s = Solution()
-s.reverseBits('00000010100101000001111010011100')
+print(s.reverseBits(43261596))
