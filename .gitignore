@@ -162,3 +162,4 @@ cython_debug/
 .vscode
 *NG.py
 *NC.py
+*NU.py
