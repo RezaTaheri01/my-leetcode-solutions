@@ -6,7 +6,7 @@ class Solution:
     def isSubsequence(self, s: str, t: str) -> bool:
         # Get the length of string `s`
         len_s = len(s)
-        
+
         # If `s` is longer than `t`, it cannot be a subsequence
         if len_s > len(t):
             return False
@@ -19,7 +19,7 @@ class Solution:
             # If we've matched all characters in `s`, exit the loop early
             if index_s == len_s:
                 break
-            
+
             # If the current character in `t` matches the current character in `s`,
             # move to the next character in `s`
             if s[index_s] == char:
@@ -28,9 +28,20 @@ class Solution:
         # Check if we've matched all characters in `s`
         return index_s == len_s
 
+# # Pythonic Solution
+# class Solution:
+#     def isSubsequence(self, s: str, t: str) -> bool:
+#         iter_t = iter(t)
+
+#         return all(char in iter_t for char in s)
+
 
 s = Solution()
-print(s.isSubsequence("abc", "ahbgdc"))  # True, "abc" is a subsequence of "ahbgdc"
-print(s.isSubsequence("axc", "ahbgdc"))  # False, "axc" is not a subsequence of "ahbgdc"
-print(s.isSubsequence("", "ahbgdc"))     # True, an empty string is a subsequence of any string
-print(s.isSubsequence("abc", ""))        # False, non-empty string cannot be a subsequence of an empty string
+# True, "abc" is a subsequence of "ahbgdc"
+print(s.isSubsequence("abc", "ahbgdc"))
+# False, "axc" is not a subsequence of "ahbgdc"
+print(s.isSubsequence("axc", "ahbgdc"))
+# True, an empty string is a subsequence of any string
+print(s.isSubsequence("", "ahbgdc"))
+# False, non-empty string cannot be a subsequence of an empty string
+print(s.isSubsequence("abc", ""))
