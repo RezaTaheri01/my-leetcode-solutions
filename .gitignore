@@ -163,3 +163,4 @@ cython_debug/
 *NG.py
 *NC.py
 *NU.py
+leetcode_file_generator.py
