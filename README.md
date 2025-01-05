@@ -1,3 +1,13 @@
-# Attention
+# Leetcode Solutions
 
-I acknowledge that not all of the solutions are efficient, and some may require improvement. I'm committed to refining them one at a time, continuously striving for better and more effective solutions.
+Welcome to my repository of Leetcode solutions! Here, you'll find my implementations of various coding problems from [Leetcode](https://leetcode.com/). These solutions are written mostly in Python and are designed to be clear, efficient, and easy to understand.
+
+
+
+## License
+
+This repository is licensed under the [MIT License](LICENSE). You are free to use, modify, and distribute the solutions.
+
+---
+
+Happy coding! 🚀
