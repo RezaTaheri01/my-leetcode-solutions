@@ -4,28 +4,25 @@ class Solution:
         if len(arr) < 3:
             return False
 
-        prev = arr[0]
         increase = False  # Flag to indicate if the array is increasing
         decrease = False  # Flag to indicate if the array is decreasing
 
-        for num in arr[1:]:
+        for i in range(len(arr) - 1):
             # if True => not strictly increasing or decreasing
-            if num == prev:
+            if arr[i + 1] == arr[i]:
                 return False
 
-            if num > prev:
+            if arr[i + 1] > arr[i]:
                 # If we've already started decreasing, return False (invalid transition)
                 if decrease:
                     return False
                 increase = True  # Mark that the array is increasing
 
-            if num < prev:
+            if arr[i + 1] < arr[i]:
                 # If the array hasn't started increasing yet, return False
                 if not increase:
                     return False
                 decrease = True  # Mark that the array is decreasing
-
-            prev = num
 
         # A valid mountain array must have both increasing and decreasing phases
         return increase and decrease
