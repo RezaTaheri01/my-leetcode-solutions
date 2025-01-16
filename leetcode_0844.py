@@ -1,37 +1,42 @@
-# Todo: O(1) space
 class Solution:
     def backspaceCompare(self, s: str, t: str) -> bool:
-        ls, lt = len(s) - 1, len(t) - 1
-        if lt > ls:
-            s, t = t, s
-            ls, lt = lt, ls
-
-        sRes, tRes = "", ""
+        i, j = len(s) - 1, len(t) - 1
         sBack, tBack = 0, 0
 
-        while ls > -1:  # O(n)
-            if s[ls] == '#':
-                sBack += 1
-            elif sBack > 0:
-                sBack -= 1
-            else:
-                sRes += s[ls]
-            ls -= 1
+        while i >= 0 or j >= 0:
+            while i >= 0:
+                if s[i] == "#":
+                    sBack += 1
+                    i -= 1
+                elif sBack > 0:
+                    sBack -= 1
+                    i -= 1
+                else:
+                    break
 
-            if lt > -1:
-                if t[lt] == '#':
+            while j >= 0:
+                if t[j] == "#":
                     tBack += 1
+                    j -= 1
                 elif tBack > 0:
                     tBack -= 1
+                    j -= 1
                 else:
-                    tRes += t[lt]
-                lt -= 1
+                    break
 
-        return sRes == tRes
+            if i >= 0 and j >= 0 and s[i] != t[j]:
+                return False
+            if (i >= 0) != (j >= 0):
+                return False
+
+            i -= 1
+            j -= 1
+
+        return True
 
 
 s = Solution()
 print(s.backspaceCompare(s="ab#c", t="ad#c"))  # True
 print(s.backspaceCompare(s="ab##", t="c#d#"))  # True
 print(s.backspaceCompare(s="ab#b", t="b"))  # False
-print(s.backspaceCompare(s="bb######", t=""))  # True
+print(s.backspaceCompare(s="bb###", t=""))  # True
