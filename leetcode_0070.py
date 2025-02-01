@@ -1,22 +1,20 @@
 class Solution:
-    def __init__(self, *args, **kwargs):
-        self.stairs_sequence: list = [1, 2]
+    def __init__(self):
+        self.stairs_sequence: list = [1, 2]  # Base cases
 
     def climbStairs(self, n: int) -> int:
-        if n == 0:
-            return 0
-        if n < 0:
-            n = abs(n)  # basement
+        if n <= 0:
+            return 1  # There is 1 way to stay at the ground (by doing nothing)
 
         if len(self.stairs_sequence) >= n:
-            return self.stairs_sequence[n-1]
+            return self.stairs_sequence[n - 1]
 
         prev, current = self.stairs_sequence[-2], self.stairs_sequence[-1]
-        for _ in range(n - 2):
-            prev, current = current, current + prev
+        for _ in range(len(self.stairs_sequence), n):
+            prev, current = current, prev + current
             self.stairs_sequence.append(current)
 
-        return self.stairs_sequence[-1]
+        return self.stairs_sequence[n - 1]
 
 
 s = Solution()
