@@ -1,18 +1,29 @@
-def distinct_ways(n: int):
-    if n == 0:
-        return 1
-    if n < 0:
-        return 0
+class Solution:
+    def __init__(self, *args, **kwargs):
+        self.stairs_sequence: list = [1, 2]
 
-    total_ways = distinct_ways(n - 1) + distinct_ways(n - 2)
-    return total_ways
+    def climbStairs(self, n: int) -> int:
+        if n == 0:
+            return 0
+        if n < 0:
+            n = abs(n)  # basement
 
-def climbStairs(n: int) -> int:
-    return distinct_ways(n)
+        if len(self.stairs_sequence) >= n:
+            return self.stairs_sequence[n-1]
 
-print(climbStairs(35), end=', ')
-    
-# Best   
+        prev, current = self.stairs_sequence[-2], self.stairs_sequence[-1]
+        for _ in range(n - 2):
+            prev, current = current, current + prev
+            self.stairs_sequence.append(current)
+
+        return self.stairs_sequence[-1]
+
+
+s = Solution()
+print(s.climbStairs(n=8))
+
+
+# Best of Code Readability
 # class SolutionFib:
 #     def climbStairs(self, n: int) -> int:
 #         if n <= 2:
@@ -24,5 +35,4 @@ print(climbStairs(35), end=', ')
 #         return current
 
 # s = SolutionFib()
-# print()
 # print(s.climbStairs(7))
