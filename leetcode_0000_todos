@@ -2,6 +2,8 @@ Todos:
 leetcode_0025.py
 leetcode_0148.py
 leetcode_0300.py
+leetcode_0392.py
+leetcode_1475.py
 
 
 NG & NC:
@@ -11,4 +13,7 @@ leetcode_0033.py
 leetcode_0108.py
 leetcode_0112.py
 leetcode_0209.py
+leetcode_0420.py
+leetcode_0452.py
+leetcode_0819.py
 
