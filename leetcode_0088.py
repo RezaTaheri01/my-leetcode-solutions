@@ -1,45 +1,36 @@
-nums1: list = [57, 68, 78, 88, 96, 98, 1401]
-nums2: list = [0, 32, 64, 88, 128, 128, 256, 512]
+class Solution:
+    def merge(self, nums1: list[int], m: int, nums2: list[int], n: int) -> None:
+        if not nums1:
+            nums1[:] = nums2
+            return
+        if not nums2:
+            return
 
-n = len(nums2)  # nums2 elements length
-m = len(nums1)  # nums1 elements length
-[nums1.append(0) for z in range(n)]
+        p1 = 0
+        p2 = 0
 
-n1p_last = m + n - 1
-n1p = m - 1
+        while p1 < m and p2 < n:
+            if nums1[p1] > nums2[p2]:
+                nums1[p1], nums2[p2] = nums2[p2], nums1[p1]
+                pointer = p2
+                for i in range(p2 + 1, n):
+                    if nums2[pointer] > nums2[i]:
+                        nums2[pointer], nums2[i] = nums2[i], nums2[pointer]
+                        pointer = i
+                        
 
-while nums2:
-    last = nums2.pop()
-    if last == 32:
-        pass
-    if last > nums1[n1p]:
-        nums1[n1p_last] = last
+            p1 += 1
 
-    elif last == nums1[n1p]:
-        nums1[n1p_last] = last
-        nums1[n1p_last-1] = last
-        n1p_last -= 1
-        n1p -= 1
+        for i in range(m, n+m):
+            nums1[i] = nums2[p2]
+            p2 += 1
 
-    else:
-        nums1[n1p_last] = nums1[n1p]
-        nums2.append(last)
-        n1p -= 1
+        return nums1
 
-    n1p_last -= 1
 
-    if n1p < 0:
-        for num in nums2[::-1]:
-            nums1[n1p_last] = num
-            n1p_last -= 1
-        break
+s = Solution()
 
-if nums1 == sorted(nums1):
-    print(True)
-    print(nums1)
-
-# x = eval("2.5+4*(8+2)-abs(2-10)") # string form of python code
-# print(x)
-
-# eval("print('Hello Sajjad')") # string form of python code
-print('0-1Ab'.lower())
+# print(s.merge(nums1=[1, 2, 3, 0, 0, 0], m=3, nums2=[2, 5, 6], n=3))
+print(s.merge(nums1=[4, 5, 6, 0, 0, 0], m=3, nums2=[1, 2, 3], n=3))
+# print(s.merge(nums1=[1], m=1, nums2=[], n=0))
+# print(s.merge(nums1=[0], m=0, nums2=[1], n=1))
