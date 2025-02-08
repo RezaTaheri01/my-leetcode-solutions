@@ -1,6 +1,7 @@
+# Todo: O(log (m+n))
 def findMedianSortedArrays(nums1: list[int], nums2: list[int]) -> float:
     nums1 += nums2
-    nums1.sort() # O(n)
+    nums1.sort()
      
     if nums1:
         l = len(nums1)
