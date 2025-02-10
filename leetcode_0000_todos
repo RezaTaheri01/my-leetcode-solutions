@@ -9,6 +9,7 @@ leetcode_1475.py
 
 
 NG & NC:
+leetcode_0004.py
 leetcode_0008.py
 leetcode_0015.py
 leetcode_0033.py
@@ -23,5 +24,6 @@ leetcode_0909.py
 NU:
 leetcode_0108.py
 leetcode_0322.py D
-leetcode_1025.py
 leetcode_0628.py
+leetcode_0912.py
+leetcode_1025.py
