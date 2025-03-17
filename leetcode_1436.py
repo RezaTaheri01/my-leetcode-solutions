@@ -1,10 +1,10 @@
 class Solution:
     def destCity(self, paths: list[list[str]]) -> str:
-        destinations: set = {path[0] for path in paths}
+        origins: set = {path[0] for path in paths}
 
-        for path in paths:
-            if path[1] not in destinations:
-                return path[1]
+        for _, dest in paths:
+            if dest not in origins:
+                return dest
 
 
 s = Solution()
