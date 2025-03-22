@@ -4,6 +4,7 @@ leetcode_0025.py
 leetcode_0088.py D
 leetcode_0129.py
 leetcode_0148.py
+leetcode_0200.py
 leetcode_0260.py
 leetcode_0300.py
 leetcode_0392.py D
@@ -14,6 +15,7 @@ NG & NC:
 leetcode_0004.py
 leetcode_0008.py
 leetcode_0015.py
+leetcode_0029.py
 leetcode_0033.py
 leetcode_0075.py
 leetcode_0112.py
@@ -22,6 +24,9 @@ leetcode_0420.py
 leetcode_0452.py
 leetcode_0819.py
 leetcode_0909.py
+leetcode_0912.py
+leetcode_1025.py
+leetcode_2650.py
 
 
 NU:
