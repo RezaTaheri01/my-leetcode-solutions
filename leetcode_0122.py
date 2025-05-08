@@ -11,3 +11,7 @@ class Solution:
                 max_profit += prices[i] - prices[i - 1]
 
         return max_profit
+
+
+s = Solution()
+print(s.maxProfit([1, 5, 7])) # On each day, you may decide to buy and/or sell the stock.
