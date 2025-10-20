@@ -1,27 +1,29 @@
+# https://www.geeksforgeeks.org/dsa/backtracking-to-find-all-subsets/
+# https://media.geeksforgeeks.org/wp-content/uploads/20230911132238/print-all-subsets.png
 from typing import List
 
-
-class Solution: 
-    def subset_recursive(self, i, arr, res, subset):
-        if i == len(arr):
-            res.append(list(subset))
+class Solution:  
+    def subset_recur(self, i, subset):
+        if i == self.length_nums:
+            self.result.append(list(subset))
             return
         
-        # include the current value and 
-        self.subset_recursive(i + 1, arr, res, subset + [arr[i]])  
+        # include the current value
+        subset.append(self.nums[i])
+        self.subset_recur(i + 1, subset)
         
-        # exclude the current value and 
-        self.subset_recursive(i + 1, arr, res, subset)
-          
-        
+        # exclude the current value
+        subset.pop()
+        self.subset_recur(i + 1, subset)
+               
     def subsets(self, nums: List[int]) -> List[List[int]]:
-        subset = []
-        result = []
+        self.nums = nums
+        self.length_nums = len(nums)
+        self.result = []
         
-        # finding recursively
-        self.subset_recursive(0, nums, result, subset)
-
-        return result 
+        self.subset_recur(0, [])
+        
+        return self.result
             
                 
                        
